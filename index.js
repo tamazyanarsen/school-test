@@ -13,7 +13,7 @@ fastify.get('/', function (request, reply) {
 })
 
 fastify.get('/api/test', (req, res) => {
-    res.send({ hello: 'world' })g
+    res.send({ hello: 'world' })
 })
 
 fastify.listen({ port: 3000 }, function (err, address) {
