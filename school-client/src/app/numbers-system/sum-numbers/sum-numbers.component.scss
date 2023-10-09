@@ -1,4 +1,6 @@
 :host {
   max-height: 100%;
   overflow: hidden;
+  display: grid;
+  grid-template-rows: 20% 1fr;
 }

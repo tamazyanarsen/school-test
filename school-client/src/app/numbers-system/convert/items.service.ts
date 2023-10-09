@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { randomIntToString } from '../utils';
+import {Injectable} from '@angular/core';
+import {randomIntToString} from '../utils';
 
 export interface ItemType {
   from: number;
@@ -12,7 +12,8 @@ export interface ItemType {
 @Injectable()
 export class ItemsService {
 
-  constructor() {}
+  constructor() {
+  }
 
   getItems() {
     const result: ItemType[] = []
@@ -27,7 +28,7 @@ export class ItemsService {
   }
 
   private generateItems(from: number, to: number) {
-    const result:ItemType[] = []
+    const result: ItemType[] = []
     Array(2).fill(1).map(() => {
       const input = randomIntToString(50, 100, from)
       const output = parseInt(input, from).toString(to)

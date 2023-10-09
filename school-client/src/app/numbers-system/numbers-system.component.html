@@ -1,4 +1,5 @@
-<div style="overflow: hidden; display: grid; grid-template-rows: 1fr 1fr; max-height: 100%">
-  <app-convert></app-convert>
-  <app-sum-numbers></app-sum-numbers>
+<div style="overflow: hidden; display: grid; grid-template-rows: 45% 45% 10%; max-height: 100%">
+  <app-convert (result)="getConvertResult($event)"></app-convert>
+  <app-sum-numbers (result)="getSumNumbersResult($event)"></app-sum-numbers>
+  <button (click)="finishJob()">Сдать работу</button>
 </div>

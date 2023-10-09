@@ -1,7 +1,9 @@
 <h2>Сложение чисел в двоичной системе счисления</h2>
-<div style="overflow: auto; max-height: 100%">
-  <div *ngFor="let item of items | async">
-    {{item | json}}
+<div style="overflow: auto;">
+  <div *ngFor="let item of items | async" style="display: grid; grid-template-columns: 20% 1fr;">
+    Сложите числа {{item.input1}} и {{item.input2}}
+    <input type="text" placeholder="введите ответ" [(ngModel)]="item.answer"
+           (change)="checkAnswer(item.answer, item.output)">
     <br>
     <br>
   </div>

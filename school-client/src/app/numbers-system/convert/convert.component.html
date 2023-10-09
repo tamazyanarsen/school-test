@@ -1,8 +1,9 @@
 <h2>Перевод из одной системы счисления в другую</h2>
-<div style="overflow: auto; max-height: 100%">
+<div style="overflow: auto;">
   <div *ngFor="let item of items | async" style="display: grid; grid-template-columns: 20% 1fr;">
     Переведите {{item.input}} из {{item.from}} в {{item.to}}
-    <input type="text" placeholder="введите ответ">
+    <input type="text" placeholder="введите ответ" [(ngModel)]="item.userAnswer"
+           (change)="checkAnswer(item.userAnswer, item.output)">
     <br>
   </div>
 </div>

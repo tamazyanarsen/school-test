@@ -16,7 +16,7 @@ export class SumItemsService {
 
   getItems() {
     const result: SumItemType[] = []
-    result.push(...Array(10).fill(1).map(() => {
+    result.push(...Array(8).fill(1).map(() => {
       const input1 = randomIntToString(50, 100, 2)
       const input2 = randomIntToString(50, 100, 2)
       const output = (parseInt(input1, 2) + parseInt(input2, 2)).toString(2)
