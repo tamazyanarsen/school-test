@@ -1,8 +1,7 @@
-import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {ItemsService, ItemType} from './items.service';
-import {FormsModule} from "@angular/forms";
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { FormsModule } from "@angular/forms";
+import { ItemType, ItemsService } from './items.service';
 
 @Component({
   selector: 'app-convert',
@@ -15,23 +14,22 @@ import {FormsModule} from "@angular/forms";
   providers: [ItemsService]
 })
 export class ConvertComponent implements OnInit {
-  items = new BehaviorSubject<ItemType[]>([])
-  count = 0
+  items: ItemType[] = []
 
-  constructor(private itemService: ItemsService) {
+  constructor(private itemService: ItemsService, private cdr: ChangeDetectorRef) {
   }
 
   @Output()
   result = new EventEmitter()
 
-  checkAnswer(answer?: string, output?: string) {
-    if (answer === output) this.count++
-    this.result.emit(this.count)
-    console.log(this.count)
+  checkAnswer() {
+    console.log(this.items)
+    this.result.emit(this.items.filter(e => e.userAnswer === e.output).length)
   }
 
   ngOnInit(): void {
-    this.items.next(this.itemService.getItems())
+    this.items = this.itemService.getItems()
+    this.cdr.detectChanges()
   }
 
 }

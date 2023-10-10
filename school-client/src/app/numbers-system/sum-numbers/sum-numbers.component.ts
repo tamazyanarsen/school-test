@@ -1,8 +1,7 @@
-import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, EventEmitter, Output, ViewEncapsulation} from '@angular/core';
-import {SumItemsService, SumItemType} from "./sum-items.service";
-import {BehaviorSubject} from "rxjs";
-import {FormsModule} from "@angular/forms";
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { FormsModule } from "@angular/forms";
+import { SumItemType, SumItemsService } from "./sum-items.service";
 
 @Component({
   selector: 'app-sum-numbers',
@@ -14,23 +13,24 @@ import {FormsModule} from "@angular/forms";
   encapsulation: ViewEncapsulation.ShadowDom,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SumNumbersComponent {
+export class SumNumbersComponent implements OnInit {
 
-  items = new BehaviorSubject<SumItemType[]>([])
+  items: SumItemType[] = []
 
   @Output()
   result = new EventEmitter()
 
-  constructor(private sumItemsService: SumItemsService) {
-    this.items.next(this.sumItemsService.getItems())
+  constructor(private sumItemsService: SumItemsService, private cdr: ChangeDetectorRef) {
   }
 
-  count = 0
+  ngOnInit(): void {
+    this.items = this.sumItemsService.getItems()
+    this.cdr.detectChanges()
+  }
 
-  checkAnswer(answer?: string, output?: string) {
-    if (answer === output) this.count++
-    this.result.emit(this.count)
-    console.log(this.count)
+  checkAnswer() {
+    console.log(this.items)
+    this.result.emit(this.items.filter(e => e.answer === e.output).length)
   }
 
 }

@@ -1,7 +1,7 @@
-import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {ConvertComponent} from './convert/convert.component';
-import {SumNumbersComponent} from './sum-numbers/sum-numbers.component';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ConvertComponent } from './convert/convert.component';
+import { SumNumbersComponent } from './sum-numbers/sum-numbers.component';
 
 @Component({
   templateUrl: './numbers-system.component.html',
@@ -25,6 +25,7 @@ export class NumbersSystemComponent {
   }
 
   finishJob() {
+    console.log(this.convertResult, this.sumNumbers)
     alert(Math.round((this.convertResult + this.sumNumbers) / 4))
   }
 }
