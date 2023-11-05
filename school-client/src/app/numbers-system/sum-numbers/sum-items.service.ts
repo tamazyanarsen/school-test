@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {randomIntToString} from "../utils";
+import { Injectable } from '@angular/core';
+import { randomIntToString } from "../../utils";
 
 export interface SumItemType {
   input1: string

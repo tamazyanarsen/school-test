@@ -1,1 +1,0 @@
-cp -r /root/school-test/school-client/dist/school-client/* /var/www/html/

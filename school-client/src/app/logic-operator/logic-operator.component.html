@@ -1,0 +1,9 @@
+<div style="display: grid; grid-template-columns: 1fr; gap: 1em; overflow: auto; max-height: 80vh;">
+  <div *ngFor="let item of items; let ind=index"
+    style="display: grid; grid-template-columns: 1fr 1fr; border: 1px solid lightgreen;">
+    <div>{{item.test}}</div>
+    <div><input type="text" [(ngModel)]="item.userAnswer"></div>
+  </div>
+</div>
+<br><br>
+<button (click)="checkAllTest()">Сдать работу</button>
